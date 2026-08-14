@@ -13,6 +13,7 @@
     "dev:web": "npm run dev --workspace @watch-party/frontend",
     "dev:api": "npm run dev --workspace @watch-party/backend",
     "build": "tsc -b && npm run build --workspaces --if-present",
+    "start": "npm run start --workspace @watch-party/backend",
     "lint": "eslint .",
     "typecheck": "tsc -b",
     "test": "vitest run",
