@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: watch_party
+      POSTGRES_USER: watch_party
+      POSTGRES_PASSWORD: watch_party
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:8-alpine
+    ports:
+      - '6379:6379'
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+      - redis_data:/data
+
+  livekit:
+    image: livekit/livekit-server:latest
+    command: ['--config', '/etc/livekit.yaml']
+    ports:
+      - '7880:7880'
+      - '7881:7881'
+      - '50000-50100:50000-50100/udp'
+    volumes:
+      - ./infra/livekit.yaml:/etc/livekit.yaml:ro
+
+  coturn:
+    image: coturn/coturn:4.6.3
+    command: ['-n', '--log-file=stdout', '--no-dtls', '--no-tls', '--listening-port=3478']
+    ports:
+      - '3479:3478/udp'
+      - '3479:3478/tcp'
+
+volumes:
+  postgres_data:
+  redis_data:

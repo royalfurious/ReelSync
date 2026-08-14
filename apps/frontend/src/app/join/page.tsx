@@ -1,0 +1,47 @@
+import Link from 'next/link';
+import { ArrowLeft, Users } from 'lucide-react';
+
+import { JoinByCodeForm } from '@/components/join-by-code-form';
+import { buttonVariants } from '@/components/ui/button';
+
+export default function JoinLandingPage() {
+  return (
+    <main className="relative min-h-screen">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(139,92,246,0.15),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(236,72,153,0.15),transparent_50%)]" />
+
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 md:px-10 lg:px-12">
+        <div className="mb-8">
+          <Link className={buttonVariants({ variant: 'ghost' })} href="/">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back home
+          </Link>
+        </div>
+
+        <div className="flex flex-1 items-center">
+          <div className="grid w-full gap-12 lg:grid-cols-[minmax(0,1fr)_400px]">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-2 text-sm text-purple-300">
+                <Users className="h-4 w-4" />
+                Join room
+              </div>
+              <h1 className="font-display text-5xl font-bold text-white md:text-6xl lg:text-7xl">
+                Got an invite?
+                <br />
+                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Jump right in.
+                </span>
+              </h1>
+              <p className="max-w-xl text-lg leading-relaxed text-white/65 md:text-xl">
+                Paste the invite link or enter the room code your host shared with you.
+              </p>
+            </div>
+
+            <div className="flex items-center">
+              <JoinByCodeForm />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}

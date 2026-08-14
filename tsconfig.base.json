@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowJs": false,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@watch-party/shared": ["packages/shared/src/index.ts"],
+      "@watch-party/shared/*": ["packages/shared/src/*"],
+      "@watch-party/db": ["packages/db/src/index.ts"],
+      "@watch-party/db/*": ["packages/db/src/*"]
+    }
+  }
+}
